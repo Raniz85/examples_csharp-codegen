@@ -8,7 +8,7 @@ namespace Main.Tests.User;
 public abstract class UserRepositoryTests<T>(T engine): IAsyncLifetime
     where T: IDbEngine
 {
-    private readonly UserRepository repository = new UserRepository(engine);
+    private readonly UserRepository repository = new(engine);
 
     public async Task InitializeAsync()
     {

@@ -4,8 +4,15 @@ using Npgsql;
 
 namespace Main.User;
 
+/// <summary>
+/// A connection factory to open a DbConnection
+/// </summary>
 public interface IConnectionFactory
 {
+    /// <summary>
+    /// Open a new connection
+    /// </summary>
+    /// <returns></returns>
     DbConnection OpenConnection();
 }
 

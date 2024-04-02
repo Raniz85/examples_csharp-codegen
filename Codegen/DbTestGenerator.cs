@@ -41,6 +41,7 @@ namespace {Namespace}
             .Collect()
             .Combine(context.CompilationProvider);
 
+        // Execute all the generators to generate source code
         context.RegisterSourceOutput(testsToGenerate,
             static (context, pair) =>
             {
@@ -51,6 +52,11 @@ namespace {Namespace}
             });
     }
 
+    /// <summary>
+    /// Check if a node is a class declaration syntax with at least one attribute
+    /// </summary>
+    /// <param name="syntaxNode"></param>
+    /// <returns></returns>
     private static bool IsClassWithAttributes(SyntaxNode syntaxNode)
     {
         return syntaxNode is ClassDeclarationSyntax classNode
@@ -58,6 +64,11 @@ namespace {Namespace}
                    .SelectMany(list => list.Attributes).Any();
     }
 
+    /// <summary>
+    /// Create a test generator for a class context
+    /// </summary>
+    /// <param name="context">The context, must contain a node of type ClassDeclarationSyntax</param>
+    /// <returns>A generator that can generate concrete tests for the abstract test class</returns>
     private static Generator? GetTestGenerator(GeneratorSyntaxContext context)
     {
         var classNode = context.Node as ClassDeclarationSyntax; // We know this won't fail
@@ -73,6 +84,12 @@ namespace {Namespace}
     private class Generator(GeneratorSyntaxContext gsc)
     {
         private readonly ClassDeclarationSyntax classNode = (ClassDeclarationSyntax)gsc.Node;
+        
+        /// <summary>
+        /// Generate concrete test classes for an abstract, database-agnostic test suite
+        /// </summary>
+        /// <param name="spc"></param>
+        /// <param name="compilation"></param>
         public void Generate(SourceProductionContext spc, Compilation compilation)
         {
             var semanticModel = compilation.GetSemanticModel(classNode.SyntaxTree);

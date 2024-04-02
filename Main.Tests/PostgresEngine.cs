@@ -1,5 +1,4 @@
 using System.Data.Common;
-using Main.User;
 using Npgsql;
 using Testcontainers.PostgreSql;
 
