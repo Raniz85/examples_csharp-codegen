@@ -38,6 +38,7 @@ public class DbTestGeneratorTests
 namespace User.Repository;
 public class PostgresUserRepositoryTests(): UserRepositoryTests<PostgresEngine>(new PostgresEngine()) {}
 public class MariaDbUserRepositoryTests(): UserRepositoryTests<MariaDbEngine>(new MariaDbEngine()) {}
+public class SqliteUserRepositoryTests(): UserRepositoryTests<SqliteEngine>(new SqliteEngine()) {}
 ".Trim());
     }
 }

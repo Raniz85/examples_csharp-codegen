@@ -8,4 +8,6 @@ namespace Main.User;
 /// <param name="Age">The user's age</param>
 public record User(Guid Id, string Name, int Age)
 {
+    // Constructor for SQLite
+    User(string Id, string Name, Int64 Age) : this(Guid.Parse(Id), Name, (int) Age) {}
 }

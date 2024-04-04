@@ -13,6 +13,7 @@
 
     <ItemGroup>
         <PackageReference Include="FluentAssertions" Version="6.12.0" />
+        <PackageReference Include="Microsoft.Data.Sqlite" Version="8.0.3" />
         <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.6.0"/>
         <PackageReference Include="Testcontainers.MariaDb" Version="3.8.0" />
         <PackageReference Include="Testcontainers.PostgreSql" Version="3.8.0" />

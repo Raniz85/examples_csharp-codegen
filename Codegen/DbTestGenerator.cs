@@ -100,7 +100,7 @@ namespace {Namespace}
             
             var @namespace = classSymbol.ContainingNamespace.ToDisplayString();
             var className = classNode.Identifier.Text;
-            GenerateCode(spc, @namespace, className, ["Postgres", "MariaDb"]);
+            GenerateCode(spc, @namespace, className, ["Postgres", "MariaDb", "Sqlite"]);
         }
 
         private void GenerateCode(SourceProductionContext spc, string @namespace, string className, IEnumerable<string> providers)
